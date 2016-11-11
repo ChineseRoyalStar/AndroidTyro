@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 
+#import "UIView+FrameUtility.h"
+
 @interface ViewController ()
 
 @end
@@ -16,7 +18,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    UIView *redView = [UIView new];
+    redView.X(100).Y(20).Width(50).Height(100);
+    redView.backgroundColor = [UIColor redColor];
+    [self.view addSubview:redView];
+    
+    UIView *blueView = [UIView new];
+    blueView.Center(CGPointMake(150, 300)).Size(CGSizeMake(100, 50));
+    blueView.backgroundColor = [UIColor blueColor];
+    [self.view addSubview:blueView];
+
 }
 
 

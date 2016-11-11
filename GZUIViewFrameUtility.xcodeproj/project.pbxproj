@@ -13,6 +13,7 @@
 		22E974071DD595FD00E47E6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22E974051DD595FD00E47E6D /* Main.storyboard */; };
 		22E974091DD595FD00E47E6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22E974081DD595FD00E47E6D /* Assets.xcassets */; };
 		22E9740C1DD595FD00E47E6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22E9740A1DD595FD00E47E6D /* LaunchScreen.storyboard */; };
+		22E974161DD5968C00E47E6D /* UIView+FrameUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E974151DD5968C00E47E6D /* UIView+FrameUtility.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		22E974081DD595FD00E47E6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22E9740B1DD595FD00E47E6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22E9740D1DD595FD00E47E6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22E974141DD5968C00E47E6D /* UIView+FrameUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FrameUtility.h"; sourceTree = "<group>"; };
+		22E974151DD5968C00E47E6D /* UIView+FrameUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FrameUtility.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,7 @@
 		22E973FB1DD595FC00E47E6D /* GZUIViewFrameUtility */ = {
 			isa = PBXGroup;
 			children = (
+				22E974131DD5965A00E47E6D /* FrameUtility */,
 				22E973FF1DD595FD00E47E6D /* AppDelegate.h */,
 				22E974001DD595FD00E47E6D /* AppDelegate.m */,
 				22E974021DD595FD00E47E6D /* ViewController.h */,
@@ -77,6 +81,15 @@
 				22E973FD1DD595FD00E47E6D /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		22E974131DD5965A00E47E6D /* FrameUtility */ = {
+			isa = PBXGroup;
+			children = (
+				22E974141DD5968C00E47E6D /* UIView+FrameUtility.h */,
+				22E974151DD5968C00E47E6D /* UIView+FrameUtility.m */,
+			);
+			path = FrameUtility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,6 +166,7 @@
 				22E974041DD595FD00E47E6D /* ViewController.m in Sources */,
 				22E974011DD595FD00E47E6D /* AppDelegate.m in Sources */,
 				22E973FE1DD595FD00E47E6D /* main.m in Sources */,
+				22E974161DD5968C00E47E6D /* UIView+FrameUtility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
