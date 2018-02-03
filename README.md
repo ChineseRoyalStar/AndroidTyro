@@ -11,3 +11,7 @@
 ```ruby
 2018.01.30 Chapter4:Fragment
 ```
+```ruby
+2018.02.02 Chapter5:BestPractice
+           Chapter6:FileOutput
+```
