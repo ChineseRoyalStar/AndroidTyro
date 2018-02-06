@@ -15,3 +15,11 @@
 2018.02.02 Chapter5:BestPractice
            Chapter6:FileOutput
 ```
+
+```ruby
+2018.02.05 Chapter6:SQLite
+```
+
+```ruby
+2018.02.06 Chapter6:LitePal
+```
