@@ -91,6 +91,9 @@ public class MainActivity extends AppCompatActivity {
                         Log.d("MainActivity", "book author is "+author);
                         Log.d("MainActivity","book pages is "+pages);
                         Log.d("MainActivity","book price is "+price);
+
+                        List<Book> books = DataSupport
+
                     }while (cursor.moveToNext());
                 }
                 cursor.close();
