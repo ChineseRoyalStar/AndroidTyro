@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
 
         Button createDatabase = (Button)findViewById(R.id.create_database);
         createDatabase.setOnClickListener(new View.OnClickListener(){
-
             @Override
             public void onClick(View v) {
                 dbHelper.getWritableDatabase();
@@ -33,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
 
         Button addData = (Button)findViewById(R.id.add_data);
         addData.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -55,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
 
         Button updateData = (Button)findViewById(R.id.update_data);
         updateData.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -68,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
 
         Button deleteButton = (Button)findViewById(R.id.delete_data);
         deleteButton.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 SQLiteDatabase db = dbHelper.getWritableDatabase();
