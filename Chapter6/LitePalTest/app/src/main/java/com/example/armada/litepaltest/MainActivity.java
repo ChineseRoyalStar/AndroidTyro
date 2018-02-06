@@ -84,6 +84,15 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("MainActivity","book price is " + book.getPrice());
                     Log.d("MainActivity","book press is " + book.getPress());
                 }
+
+                /**
+                    List<Book> books = DataSupport.select("name","author","pages")
+                            .where("pages > ?","400")
+                            .order("pages")
+                            .limit(10)
+                            .offset(10)
+                            .find(Book.class);
+                 */
             }
         });
     }
