@@ -23,3 +23,6 @@
 ```ruby
 2018.02.06 Chapter6:LitePal
 ```
+```ruby
+2018.02.09 Chapter7:ContentProvider
+```
