@@ -26,3 +26,14 @@
 ```ruby
 2018.02.09 Chapter7:ContentProvider
 ```
+
+```ruby
+2018.02.14 Chapter8:Notification & Album
+```
+
+```ruby
+2018.02.15
+2018.02.16 Chapter8:Media
+```
+
+
