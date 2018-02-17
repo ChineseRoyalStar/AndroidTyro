@@ -1,0 +1,31 @@
+apply plugin: 'com.android.application' //应用程序模块
+
+android {
+    compileSdkVersion 26 //指定项目的编译版本
+    defaultConfig {
+        applicationId "com.example.armada.activitytest" //包名
+        minSdkVersion 15 //指定项目最低兼容的Android系统版本
+        targetSdkVersion 26 //指定的值表示你在该改目标版本已经做过了充分的测试，系统将会为你启用一些最新的功能和特性
+        versionCode 1 //指定项目的版本号
+        versionName "1.0" //指定项目的版本名
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false //用于指定是否对项目的代码进行混淆
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //用于指定混淆时使用的规则文件
+            //proguard-android.txt是Android SDK目录下的
+            //proguard-rules.pro是在当前项目的根目录下的
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar']) //本地依赖库说明
+    implementation 'com.android.support:appcompat-v7:26.1.0' //远程依赖库说明
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:0.5'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:2.2.2'
+}
