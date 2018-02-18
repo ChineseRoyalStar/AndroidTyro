@@ -1,9 +1,8 @@
 package com.example.armada.activitytest;
 
 import android.content.Intent;
-import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class FirstActivity extends AppCompatActivity {
+public class FirstActivity extends BaseActivity{
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -37,6 +36,10 @@ public class FirstActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_layout);
+
+        //Log.d("FirstActivity",this.toString());
+
+        Log.d("FirstActivity","Task id is "+getTaskId());
 
         Button button1 = (Button)findViewById(R.id.button_1);
         button1.setOnClickListener(new View.OnClickListener() {
@@ -73,9 +76,18 @@ public class FirstActivity extends AppCompatActivity {
                  *  startActivity(intent);
                  */
 
-                Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
-                startActivityForResult(intent,1);
+                /**
+                 * Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
+                 * startActivityForResult(intent,1);
+                 */
 
+                /**
+                 * Intent intent = new Intent(FirstActivity.this,SecondActivity.class);
+                 * startActivity(intent);
+                 */
+
+                //启动活动的最佳写法
+                SecondActivity.actionStart(FirstActivity.this,"data1","data2");
             }
         });
     }

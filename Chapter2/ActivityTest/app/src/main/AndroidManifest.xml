@@ -10,8 +10,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FirstActivity">
 
+        <!-- 启动模式一共有4种，
+        standard,
+        singleTop, 当活动的启动模式指定为singleTop，在启动活动时如果发现返回栈的栈顶已经是该活动，则认为可以直接使用它，不会在创建新的活动实例；
+                   不过当FirstActivity并未处于栈顶位置时，这时再启动FirstActivity，还是会创建新的实例的。
+        singleTask, 当活动的启动模式是singleTask，每次启动该活动时系统首先会在返回栈中检查是否存在该活动的实例，如果发现已经存在则直接使用该实例，
+                    并把活动之上的所有活动统统出栈，如果没有发现就会常见一个新的活动实例
+        singleInstance -->
+        <activity android:name=".FirstActivity">
             <!-- 配置主活动 -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,6 +27,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SecondActivity">
+            <!--android:launchMode="singleInstance">-->
             <intent-filter>
                 <action android:name="com.example.armada.activitytest.ACTION_START" />
 
