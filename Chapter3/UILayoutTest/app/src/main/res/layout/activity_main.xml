@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/linearlayout_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Linear Layout"/>
+
+    <Button
+        android:id="@+id/relativelayout_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Relative Layout"/>
+
+    <Button
+        android:id="@+id/framelayout_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Frame Layout"/>
+
+    <Button
+        android:id="@+id/percentframelayout_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Percent Frame Layout"/>
+
+</LinearLayout>
