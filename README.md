@@ -36,6 +36,6 @@
 2018.02.16 Chapter8:Media
 ```
 ```ruby
-2018.04.5 Network:HttpURLConnection
+2018.04.05 Network:HttpURLConnection
 ```
 
