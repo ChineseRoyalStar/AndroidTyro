@@ -2,13 +2,19 @@ package com.example.armada.networktest;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlPullParserFactory;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -83,16 +89,65 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 try {
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("https://www.baidu.com")
+                            //.url("https://www.baidu.com")
+                            .url("http://www.w3school.com.cn/example/xmle/note.xml")
                             .build();
                     Response response = client.newCall(request).execute();
-                    String responseData = response.body().toString();
-                    showResponse(responseData);
+                    String responseData = response.body().string();
+                    //showResponse(responseData);
+                    parseXMLWithPull(responseData);
                 }catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         }).start();
+    }
+
+    private void parseXMLWithPull(String xmlData) {
+        try {
+            XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+            XmlPullParser xmlPullParser = factory.newPullParser();
+            xmlPullParser.setInput(new StringReader(xmlData));
+            int eventType = xmlPullParser.getEventType();
+            String to = "";
+            String from = "";
+            String heading = "";
+            String body = "";
+
+            while (eventType != XmlPullParser.END_DOCUMENT) {
+                String nodeName = xmlPullParser.getName();
+                switch(eventType) {
+                    // 开始解析某个节点
+                    case XmlPullParser.START_TAG: {
+                        if ("to".equals(nodeName)) {
+                            to = xmlPullParser.nextText();
+                        }else if ("from".equals(nodeName)) {
+                            from = xmlPullParser.nextText();
+                        }else if ("heading".equals(nodeName)) {
+                            heading = xmlPullParser.nextText();
+                        }else if ("body".equals(nodeName)) {
+                            body = xmlPullParser.nextText();
+                        }
+                        break;
+                    }
+
+                    case XmlPullParser.END_TAG: {
+                        if ("note".equals(nodeName)) {
+                            Log.d("MainActivity", "from "+from);
+                            Log.d("MainActivity","to "+to);
+                            Log.d("MainActivity", "heading "+heading);
+                            Log.d("MainActivity", "body "+body);
+                        }
+                        break;
+                    }
+                    default:
+                        break;
+                }
+                eventType = xmlPullParser.next();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void showResponse(final String response) {
