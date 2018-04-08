@@ -19,6 +19,7 @@ import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringReader;
@@ -28,6 +29,7 @@ import java.util.List;
 
 import javax.xml.parsers.SAXParserFactory;
 
+import okhttp3.Call;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -90,6 +92,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
         }).start();
+    }
+
+    private void sendRequestWithHttpUtil() {
+        String address = "https://www.sojson.com/open/api/weather/json.shtml?city=%E5%8C%97%E4%BA%AC";
+        HttpUtil.sendHttpRequest(address, new HttpCallbackListener() {
+            @Override
+            public void onFinish(String response) {
+                // 在这里根据返回内容进行具体的逻辑
+            }
+
+            @Override
+            public void onError(Exception e) {
+                // 在这里对异常情况进行处理
+            }
+        });
+
+        HttpUtil.sendOkHttpRequest(address, new okhttp3.Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                // 在这里对异常情况进行处理
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                // 得到服务器返回的具体内容
+            }
+        });
     }
 
     private void sendRequestWithOkHttp() {
