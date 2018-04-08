@@ -7,6 +7,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.xml.sax.InputSource;
+import org.xml.sax.XMLReader;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -17,6 +24,9 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
+
+import javax.xml.parsers.SAXParserFactory;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -90,12 +100,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
                             //.url("https://www.baidu.com")
-                            .url("http://www.w3school.com.cn/example/xmle/note.xml")
+                            // XML解析
+                            //.url("http://www.w3school.com.cn/example/xmle/note.xml")
+                            // JSON解析
+                            .url("https://www.sojson.com/open/api/weather/json.shtml?city=%E5%8C%97%E4%BA%AC")
                             .build();
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();
                     //showResponse(responseData);
-                    parseXMLWithPull(responseData);
+                    // XMLPull
+                    //parseXMLWithPull(responseData);
+                    //SAX
+                    //parseXMLWithSAX(responseData);
+                    // JSON
+                    //parseJSONWithJSONObject(responseData);
+                    parseJSONWithGSON(responseData);
                 }catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -146,6 +165,75 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 eventType = xmlPullParser.next();
             }
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void parseXMLWithSAX(String xmlData) {
+        try {
+            SAXParserFactory factory = SAXParserFactory.newInstance();
+            XMLReader xmlReader = factory.newSAXParser().getXMLReader();
+            ContentHandler handler = new ContentHandler();
+            // 将ContentHandler的实例设置到XMLReader中
+            xmlReader.setContentHandler(handler);
+            //开始执行解析
+            xmlReader.parse(new InputSource((new StringReader(xmlData))));
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void parseJSONWithJSONObject(String jsonData) {
+        try {
+            JSONObject json = new JSONObject(jsonData);
+            JSONObject data = json.getJSONObject("data");
+            JSONArray forecast = data.getJSONArray("forecast");
+
+            for(int i = 0; i < forecast.length(); i++) {
+                JSONObject jsonObject = forecast.getJSONObject(i);
+                String date = jsonObject.getString("date");
+                String sunrise = jsonObject.getString("sunrise");
+                String high = jsonObject.getString("high");
+                String low = jsonObject.getString("low");
+                String aqi = jsonObject.getString("aqi");
+                String fx = jsonObject.getString("fx");
+                String fl = jsonObject.getString("fl");
+                String type = jsonObject.getString("type");
+                String notice = jsonObject.getString("notice");
+
+                Log.d("MainActivity","date is "+date);
+                Log.d("MainActivity","sunrise is "+sunrise);
+                Log.d("MainActivity","high is "+high);
+                Log.d("MainActivity","low is "+low);
+                Log.d("MainActivity","aqi is "+aqi);
+                Log.d("MainActivity","fx is "+fx);
+                Log.d("MainActivity","fl is "+fl);
+                Log.d("MainActivity","type is "+type);
+                Log.d("MainActivity","notice is "+notice);
+            }
+
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void parseJSONWithGSON(String jsonData) {
+        try {
+
+            Gson gson = new Gson();
+            List<Weather> weathers = gson.fromJson(jsonData, JSONResult.class).getData().getForecast();
+            for (Weather weather:weathers) {
+                Log.d("MainActivity","date is "+weather.getDate());
+                Log.d("MainActivity","sunrise is "+weather.getSunrise());
+                Log.d("MainActivity","high is "+weather.getHigh());
+                Log.d("MainActivity","low is "+weather.getLow());
+                Log.d("MainActivity","aqi is "+weather.getAqi());
+                Log.d("MainActivity","fx is "+weather.getFx());
+                Log.d("MainActivity","fl is "+weather.getFl());
+                Log.d("MainActivity","type is "+weather.getType());
+                Log.d("MainActivity","notice is "+weather.getNotice());
+            }
+        }catch (Exception e) {
             e.printStackTrace();
         }
     }
