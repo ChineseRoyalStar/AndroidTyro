@@ -57,3 +57,7 @@
 2018.04.14 Chapter10 BestServicePractice
 ```
 
+```ruby
+2018.04.15 Chapter11 LBS (Baidu Map SDK)
+```
+
