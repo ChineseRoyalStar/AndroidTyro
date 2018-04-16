@@ -65,3 +65,7 @@
 2018.04.15 Chapter11 Material Design: Toolbar & DrawerLayout
 ```
 
+```ruby
+2018.04.16 Chapter11 Material Design: NavigationView & FloatingActionButton
+```
+
