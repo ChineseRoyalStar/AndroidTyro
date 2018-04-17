@@ -69,3 +69,7 @@
 2018.04.16 Chapter11 Material Design: NavigationView & FloatingActionButton
 ```
 
+```ruby
+2018.04.17 Chapter11 Material Design: Snackbar & CoordinatorLayout & CardView
+```
+
