@@ -77,3 +77,11 @@
 2018.04.18 Chapter11 Material Design: AppBarLayout
 ```
 
+```ruby
+2018.04.19 Chapter11 Material Design: SwipeRefreshLayout
+```
+
+```ruby
+2018.04.20 Chapter11 Material Design: CollapsingToolbarLayout
+```
+
